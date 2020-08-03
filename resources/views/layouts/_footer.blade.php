@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
+<footer class="footer font-small blue pt-4">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
@@ -11,26 +11,33 @@
             <div class="col-md-6 mt-md-0 mt-3">
 
                 <!-- Content -->
-                <h5 class="text-uppercase">Laravel Weibo</h5>
+                <div class="">
+                    <a href="/" class="footer-logo">
+                        <img class="type" src="https://laravel.com/img/logotype.min.svg" alt="Laravel">
+                        <h3 class="title"> WEIBO</h3>
+
+                    </a>
+                </div>
+
+
                 <p>Here is a Twitter-like website created by a php framework,Laravel.</p>
 
             </div>
             <!-- Grid column -->
 
-            <hr class="clearfix w-100 d-md-none pb-3">
 
             <!-- Grid column -->
-            <div class="col-md-3 mb-md-0 mb-3">
+            <div class="  col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
                 <h5 class="text-uppercase">Weibo links</h5>
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Help</a>
+                        <a href="{{ route('help') }}">Help</a>
                     </li>
                     <li>
-                        <a href="#!">About</a>
+                        <a href="{{ route('about') }}">About</a>
                     </li>
                 </ul>
 
@@ -38,7 +45,7 @@
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-md-3 mb-md-0 mb-3">
+            <div class="  col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
                 <h5 class="text-uppercase">Laravel Links</h5>
