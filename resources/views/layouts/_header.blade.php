@@ -29,6 +29,7 @@
                         </form>
                     </li>
                 </ul>
+                @if(Auth::check())
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,6 +42,16 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </div>
+                @else
+                @include('users.create')
+                <div class="nav-item active">
+                    <a class="nav-link" href="{{ route('about')}}">Login <span class="sr-only">(current)</span></a>
+                </div>
+                <div class="nav-item active">
+                    <a class="nav-link" style="cursor: pointer" data-toggle="modal"
+                        data-target="#registerModal">Register <span class="sr-only">(current)</span></a>
+                </div>
+                @endif
             </div>
         </nav>
 
