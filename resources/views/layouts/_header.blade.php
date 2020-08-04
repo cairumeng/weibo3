@@ -32,20 +32,26 @@
                 @if(Auth::check())
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        data-toggle="dropdown">
+                        <img class="nav-avatar" src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <form method="POST" action="{{ route('sessions.destroy',Auth::user()) }}">
+                            @csrf
+                            {!! method_field('DELETE')!!}
+                            <button class="dropdown-item" href="">Logout</button>
+                        </form>
                     </div>
                 </div>
                 @else
                 @include('users.create')
+                @include('sessions.create')
                 <div class="nav-item active">
-                    <a class="nav-link" href="{{ route('about')}}">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" style="cursor: pointer" data-toggle="modal" data-target="#loginModal">Login
+                        <span class="sr-only">(current)</span></a>
                 </div>
                 <div class="nav-item active">
                     <a class="nav-link" style="cursor: pointer" data-toggle="modal"

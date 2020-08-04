@@ -26,11 +26,13 @@ class UsersController extends Controller
         ]);
 
 
-        $user = User::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->email)
         ]);
-        return $user;
+
+        session()->flash('success', 'You have created your account!');
+        return back();
     }
 }
