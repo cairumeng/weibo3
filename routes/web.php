@@ -18,4 +18,5 @@ Route::get('help', 'StaticPagesController@help')->name('help');
 Route::get('about', 'StaticPagesController@about')->name('about');
 
 Route::resource('users', 'UsersController');
+Route::get('users/{user}/activate', 'UsersController@activate')->name('users.activate');
 Route::resource('sessions', 'SessionsController')->only(['create', 'store', 'destroy']);
