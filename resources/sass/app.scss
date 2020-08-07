@@ -7,15 +7,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-a{
-    color:#222;
-
+html, body {
+    height: 100%;
 }
-a:hover{
-text-decoration: none;
-color:#555;
 
-}
 
 .navbar-brand {
     display: inline-block;
@@ -32,29 +27,51 @@ color:#555;
     height:50px;
 }
 
+footer, nav {
+    a {
+        color:#222;
+
+        &:hover{
+            text-decoration: none;
+            color:#555;
+            }
+    }
+}
+
 footer{
     margin-top: 45px;
     border-top: solid 1px #eaeaea;
     background-color:#f5f5fa ;
-   
-    img{
+
+    img {
         vertical-align: top;
     }
     
-    .footer-copyright
-    {
-     border-top: solid 1px #eaeaea;
+    .footer-copyright {
+        border-top: solid 1px #eaeaea;
     }
-    .footer-logo{
-       
-        .title{
+    .footer-logo {
+        .title {
             display: inline-block;
         }
-        h3{
+        h3 {
             font-family: fantasy;
             vertical-align: text-bottom;
             margin-left: 30px; font-family: fantasy;
         } 
     }
     
+}
+
+.avatar-edit {
+    text-align: center;
+    img{
+         width: 30%;
+        height: 30%;
+        }
+}
+
+.password-reset {
+    width: 50%;
+    margin:0 auto;
 }

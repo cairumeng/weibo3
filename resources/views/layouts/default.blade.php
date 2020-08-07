@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="d-flex flex-column">
     @include('layouts._header')
 
     <div class="container">
@@ -17,6 +17,8 @@
     </div>
     @include('layouts._footer')
     <script src="{{ mix('js/app.js')}}"></script>
+
+    @yield('js')
 </body>
 
 </html>

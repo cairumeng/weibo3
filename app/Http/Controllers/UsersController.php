@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use App\Mail\signUpConfirmation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -52,5 +53,44 @@ class UsersController extends Controller
             session()->flash('success', 'You have activated your account!');
             return redirect()->intended(route('home'));
         }
+    }
+
+    public function edit(User $user)
+    {
+        return view('users.edit', $user);
+    }
+
+    public function update(User $user, Request $request)
+    {
+        $rule = [];
+        $data = [];
+        if ($request->password) {
+            $rule = [
+                'name' => 'required|max:50',
+                'password' => 'required|confirmed|min:6'
+            ];
+            $data = [
+                'name' => $request->name,
+                'password' => bcrypt($request->password)
+            ];
+        } else {
+            $rule = ['name' => 'required|max:50'];
+            $data = ['name' => $request->name];
+        }
+        $request->validate($rule);
+        $user->update($data);
+        session()->flash('success', 'You have update your personal info!');
+        return back();
+    }
+
+    public function uploadAvatar(Request $request, User $user)
+    {
+        $request->validate(['avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048']);
+        $avatar = $request->avatar;
+        $avatarName = time() . '.' . $avatar->extension();
+        Storage::putFileAs('images/avatars', $avatar, $avatarName, 'public');
+        $path = Storage::url('images/avatars/' . $avatarName);
+        $user->update(['avatar' => $path]);
+        return $path;
     }
 }

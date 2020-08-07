@@ -25,15 +25,20 @@ class SessionsController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->remember)) {
             session()->flash('success', 'You have logged in!');
             return redirect()->intended(route('home'));
+        } else {
+            return back()->withErrors([
+                'email' => 'your email or password is not correct',
+                'modal' => 'loginModal'
+            ]);
         }
     }
 
     public function destroy(User $user)
     {
-        $user->delete();
+        Auth::logout();
         session()->flash('success', 'You have logged out!');
         return back();
     }

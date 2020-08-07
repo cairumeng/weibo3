@@ -11,10 +11,14 @@
             </div>
             <form method="POST" action="{{ route('users.store') }}">
                 @csrf
+                <input type="hidden" value="registerModal" name="modal">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input class="form-control" id="name" name="name" value="{{ old('name')}}">
+                        <input class="form-control" id="name" name="name" value="{{ old('name') }}">
+                        @if($errors->has('name'))
+                        <div class="text-danger">{{ $errors->first('name')}}</div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
@@ -22,10 +26,16 @@
                             value="{{ old('email')}}">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
+                        @if($errors->has('email'))
+                        <div class="text-danger">{{ $errors->first('email')}}</div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password">
+                        @if($errors->has('password'))
+                        <div class="text-danger">{{ $errors->first('password')}}</div>
+                        @endif
                     </div>
 
                     <div class="form-group">
