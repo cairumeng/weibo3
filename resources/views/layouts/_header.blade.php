@@ -9,7 +9,7 @@
     <div class="header-content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel">
-            <a class="navbar-brand strong" href="#">WEIBO</a>
+            <a class="navbar-brand strong" href="{{ route('home') }}">WEIBO</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@
                         <img class="nav-avatar" src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="{{ route('users.show',Auth::user())}}">User center</a>
                         <a class="dropdown-item" href="{{route('users.edit',Auth::user())}}" data-toggle="modal"
                             data-target="#editModal">Info edit</a>
                         <div class="dropdown-divider"></div>

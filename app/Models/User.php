@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'activated'
+        'name', 'email', 'password', 'avatar', 'activated', 'created_at', 'updated_at'
     ];
 
     /**
@@ -46,5 +46,10 @@ class User extends Authenticatable
         static::creating(function ($user) {
             $user->activation_token = Str::random(10);
         });
+    }
+
+    public function statuses()
+    {
+        return $this->hasMany(Status::class);
     }
 }

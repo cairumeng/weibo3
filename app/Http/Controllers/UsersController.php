@@ -57,11 +57,13 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', $user);
     }
 
     public function update(User $user, Request $request)
     {
+        $this->authorize('update', $user);
         $rule = [];
         $data = [];
         if ($request->password) {
@@ -85,6 +87,7 @@ class UsersController extends Controller
 
     public function uploadAvatar(Request $request, User $user)
     {
+        $this->authorize('update', $user);
         $request->validate(['avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048']);
         $avatar = $request->avatar;
         $avatarName = time() . '.' . $avatar->extension();
@@ -92,5 +95,11 @@ class UsersController extends Controller
         $path = Storage::url('images/avatars/' . $avatarName);
         $user->update(['avatar' => $path]);
         return $path;
+    }
+
+    public function show(User $user)
+    {
+        $statuses = $user->statuses()->paginate(10);
+        return view('users.show', compact('user', 'statuses'));
     }
 }
