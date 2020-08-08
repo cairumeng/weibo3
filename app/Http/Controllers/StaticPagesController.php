@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class StaticPagesController extends Controller
 {
     public function home()
     {
-        return view('static_pages.home');
+        $statuses = Status::orderBy('created_at', 'desc')->limit(500)->paginate(10);
+        return view('static_pages.home', compact('statuses'));
     }
 
     public function help()
