@@ -10961,7 +10961,6 @@ nav a:hover {
 }
 
 footer {
-  margin-top: 45px;
   border-top: solid 1px #eaeaea;
   background-color: #f5f5fa;
 }
@@ -10997,5 +10996,28 @@ footer .footer-logo h3 {
 .password-reset {
   width: 50%;
   margin: 0 auto;
+}
+
+.user-info {
+  text-align: center;
+}
+
+.user-info img {
+  width: 128px;
+  height: 128px;
+  margin-bottom: 24px;
+}
+
+.status-avatar {
+  height: 50px;
+}
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  justify-content: center;
+  margin-top: 64px;
 }
 
