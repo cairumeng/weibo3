@@ -1,15 +1,16 @@
 @extends('layouts.default')
 @section ('content')
 <div class="row">
-    <form method="POST" action="{{ route('statuses.store') }}" class="col-md-6">
+    <form method="POST" action="{{ route('statuses.store') }}" class="  offset-md-2 col-md-5">
         @csrf
         <div class="form-group">
-            <textarea name="content" class="form-control " rows="5" placeholder="post a new blog here..."></textarea>
-            <button class=" btn btn-lg btn-success float-right mt-3"> Post</button>
+            <textarea name="content" class="form-control " rows="4" placeholder="post a new blog here..."></textarea>
+            <button class=" btn btn-info float-right mt-3"> Post</button>
         </div>
     </form>
-    <div class="col-md-6">
-        @include('shared._user_info',['user'=>Auth::user()])
+    <div class="col-md-3 home-user-info">
+        <img src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}" class="">
+        <h5 class="">{{Auth::user()->name}}</h5>
     </div>
 </div>
 <hr>

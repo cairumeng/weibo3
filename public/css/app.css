@@ -11003,8 +11003,22 @@ footer .footer-logo h3 {
 }
 
 .user-info img {
-  width: 128px;
-  height: 128px;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+}
+
+.user-info .count {
+  border-right: solid 1px lightgray;
+}
+
+.home-user-info {
+  text-align: center;
+}
+
+.home-user-info img {
+  width: 64px;
+  height: 64px;
   margin-bottom: 24px;
 }
 
