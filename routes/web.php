@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,9 @@ Route::post('users/{user}/uploadAvatar', 'UsersController@uploadAvatar')->name('
 
 Route::resource('users', 'UsersController');
 Route::get('users/{user}/activate', 'UsersController@activate')->name('users.activate');
+Route::get('users/{user}/followers', 'UsersController@followers')->name('users.followers');
+Route::get('users/{user}/followings', 'UsersController@followings')->name('users.followings');
+
 Route::resource('sessions', 'SessionsController')->only(['create', 'store', 'destroy']);
 
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -29,3 +33,6 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 
 Route::resource('statuses', 'StatusesController')->only(['store', 'destroy']);
+
+Route::delete('followers/{follower}', 'FollowersController@destroy')->name('followers.destroy');
+Route::post('followers/{follower}', 'FollowersController@store')->name('followers.store');

@@ -11026,6 +11026,12 @@ footer .footer-logo h3 {
   height: 50px;
 }
 
+.followers img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+}
+
 .pagination {
   display: flex;
   padding-left: 0;

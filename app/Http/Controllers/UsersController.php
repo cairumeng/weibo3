@@ -102,4 +102,16 @@ class UsersController extends Controller
         $statuses = $user->statuses()->paginate(10);
         return view('users.show', compact('user', 'statuses'));
     }
+
+    public function followers(User $user)
+    {
+        $followers = $user->followers()->paginate(10);
+        return view('followers.followers', compact('followers'));
+    }
+
+    public function followings(User $user)
+    {
+        $followings = $user->followings()->paginate(10);
+        return view('followers.followings', compact('followings'));
+    }
 }
