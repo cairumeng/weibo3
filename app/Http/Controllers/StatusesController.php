@@ -15,7 +15,7 @@ class StatusesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['contente' => 'required' | 'max:255']);
+        $request->validate(['content' => 'required|max:255']);
         $user = Auth::user();
         Status::create(['user_id' => $user->id, 'content' => $request->content]);
         session()->flash('success', 'You have posted a new blog!');

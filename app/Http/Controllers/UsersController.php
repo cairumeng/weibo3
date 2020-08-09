@@ -30,11 +30,11 @@ class UsersController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->email)
+            'password' => bcrypt($request->email),
+            'avatar' => public_path('images/avatars/user.png')
         ]);
 
         Mail::to($user)->send(new signUpConfirmation($user));
@@ -99,7 +99,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        $statuses = $user->statuses()->paginate(10);
+        $statuses = $user->statuses()->with('user')->paginate(10);
         return view('users.show', compact('user', 'statuses'));
     }
 

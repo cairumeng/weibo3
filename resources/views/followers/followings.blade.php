@@ -8,18 +8,20 @@
         <li class="followers">
             <img src="{{$following->avatar}}" alt="{{$following->name}}" class="">
             <h5 class="d-inline">{{$following->name}}</h5>
+            @can('follow',$following)
             @if(Auth::user()->isFollowing($following))
             <form method="POST" action="{{route('followers.destroy',$following)}}" class="d-inline float-right">
                 @csrf
                 {{method_field('DELETE')}}
-                <button class="btn btn-success">Unfollow</button>
+                <button class="btn btn-secondary">Unfollow</button>
             </form>
             @else
             <form method="POST" action="{{route('followers.store',$following)}}" class="d-inline float-right">
                 @csrf
-                <button class="btn btn-danger">Unfollow</button>
+                <button class="btn btn-success">Follow</button>
             </form>
             @endif
+            @endcan
         </li>
     </ul>
 </div>
